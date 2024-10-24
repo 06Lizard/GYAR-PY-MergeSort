@@ -122,13 +122,13 @@ class List:
         size = self.getSize()
         if size < 2:
             return
-        #current = None
-        #temporary = None
+        current = None # skips overly initializing and
+        temporary = None # deconstructing these two
         for i in range(size-1):
-            currenct = self.head
+            current = self.head
             for j in range(size - i - 1):
-                if current.next is None:
-                    break
+                #if current is None: # if problems ocur add " or  corent.next is None"
+                 #   break # probably not nececesary :p
                 if current.value > current.next.value:
                     temporary = current.value
                     current.value = current.next.value
@@ -136,6 +136,46 @@ class List:
                 current = current.next 
 
 
-    #def mergeSort(self):
+    def mergeSort(self):
+        self.head = self._mergeSort_(self.head)
 
-    #def _mergeSort_(self):
+        
+    def _mergeSort_(self, head):
+        if not head or not head.next:
+            return head
+
+        mid = self._split_(head)
+        left = self._mergeSort_(head)
+        right = self._mergeSort_(mid)
+        
+        return self._merge_(left, right)
+
+
+    def _split_(self, head):
+        slow = head
+        fast = head.next
+        
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        
+        mid = slow.next
+        slow.next = None
+        return mid
+
+
+    def _merge_(self, left, right):
+        tmp = Node()
+        tail = tmp
+        while left and right:
+            if left.value < right.value:
+                tail.next = left
+                left = left.next
+            else:
+                tail.next = right
+                right = right.next
+            tail = tail.next
+        tail.next = left if left else right
+        return tmp.next
+        
+        

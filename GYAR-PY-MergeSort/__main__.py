@@ -8,11 +8,13 @@ if __name__ == "__main__":
     myList.push(5)
     myList.push(4)
     myList.push(3)
+    myList.push(4)
     myList.push(2)
     myList.push(1)
     myList.boubbleSort()
+    #myList.mergeSort()
     myList.printAll()
-    print(myList.getSize())
+    #print(myList.getSize())
 
 
 # any other function

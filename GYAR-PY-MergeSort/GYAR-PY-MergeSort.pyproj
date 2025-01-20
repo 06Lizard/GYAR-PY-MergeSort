@@ -21,7 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BenchmarkingTool.py" />
     <Compile Include="List.py" />
+    <Compile Include="MergeSort.py" />
     <Compile Include="Node.py" />
     <Compile Include="__main__.py" />
   </ItemGroup>

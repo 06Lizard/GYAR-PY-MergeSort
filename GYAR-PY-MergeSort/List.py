@@ -1,9 +1,11 @@
+from asyncio.windows_events import NULL
+from MergeSort import MergeSort
 from Node import Node
 
 class List:   
     def __init__(self, head = None):
         if head is not None:
-            self.Head = Node(head)
+            self.head = Node(head)
         else:
             self.head = None 
 
@@ -64,6 +66,8 @@ class List:
             previus.next = current.next
             del current
 
+    def clear(self):
+        head = NULL;
 
     def getSize(self):
         current = self.head
@@ -137,45 +141,4 @@ class List:
 
 
     def mergeSort(self):
-        self.head = self._mergeSort_(self.head)
-
-        
-    def _mergeSort_(self, head):
-        if not head or not head.next:
-            return head
-
-        mid = self._split_(head)
-        left = self._mergeSort_(head)
-        right = self._mergeSort_(mid)
-        
-        return self._merge_(left, right)
-
-
-    def _split_(self, head):
-        slow = head
-        fast = head.next
-        
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-        
-        mid = slow.next
-        slow.next = None
-        return mid
-
-
-    def _merge_(self, left, right):
-        tmp = Node()
-        tail = tmp
-        while left and right:
-            if left.value < right.value:
-                tail.next = left
-                left = left.next
-            else:
-                tail.next = right
-                right = right.next
-            tail = tail.next
-        tail.next = left if left else right
-        return tmp.next
-        
-        
+        self.head = MergeSort(self.head).sorted_head

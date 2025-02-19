@@ -14,11 +14,9 @@ class List:
         if (self.head == None):
             self.head = Node(input)
         else:
-            current = self.head
-            while (current.next != None):
-                current = current.next
-            current.next = Node(input)
-
+            node = Node(input)
+            node.next = self.head
+            self.head = node
 
     def pushAt(self, index):
         if index < 0 or index > self.getSize():

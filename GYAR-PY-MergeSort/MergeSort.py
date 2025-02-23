@@ -1,22 +1,19 @@
 from Node import Node
 
 class MergeSort:
-    def __init__(self, head):
-        self.sorted_head = self._mergeSort(head)
-
-
-    def _mergeSort(self, head):
+    @staticmethod
+    def mergeSort(head):
         if not head or not head.next:
             return head
 
-        mid = self._split(head)
-        left = self._mergeSort(head)
-        right = self._mergeSort(mid)
+        mid = MergeSort._split(head)
+        left = MergeSort.mergeSort(head)
+        right = MergeSort.mergeSort(mid)
         
-        return self._merge(left, right)
+        return MergeSort._merge(left, right)
 
 
-    def _split(self, head):
+    def _split(head):
         slow = head
         fast = head.next
         
@@ -29,7 +26,7 @@ class MergeSort:
         return mid
 
 
-    def _merge(self, left, right):
+    def _merge(left, right):
         tmp = Node()
         tail = tmp
         while left and right:

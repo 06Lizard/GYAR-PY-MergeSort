@@ -151,7 +151,7 @@ class BenchmarkingTool:
             self.list.clear()
 
         # Calculate average merge sort time
-        average_merge_sort_time = np.mean(merge_sort_times)
+        average_merge_sort_time = sum(merge_sort_times) / len(merge_sort_times)
         print(f"\nAverage Merge Sort time: {average_merge_sort_time:.3f} ms")
 
         # Benchmark bubble sort (single iteration)

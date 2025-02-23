@@ -139,4 +139,4 @@ class List:
 
 
     def mergeSort(self):
-        self.head = MergeSort(self.head).sorted_head
+        self.head = MergeSort.mergeSort(self.head)
